@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import QueryBar from './query_bar';
-import LogContent from './log_content';
+import QueryBar from '../containers/query_bar';
+import LogContent from '../containers/log_content';
+import SampleButtons from '../containers/sample_buttons';
 
 export default class App extends Component {
   render() {
@@ -8,6 +9,7 @@ export default class App extends Component {
       <div>
         <LogContent />
         <QueryBar />
+        <SampleButtons />
       </div>
     );
   }

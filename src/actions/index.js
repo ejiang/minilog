@@ -1,8 +1,16 @@
-export const UPDATE_TEXT = 'UPDATE_TEXT';
+export const UPDATE_QUERY = 'UPDATE_QUERY';
+export const UPDATE_CONTENT = 'UPDATE_TEXT';
 
-export function parse(query) {
+export function queryUpdate(query) {
     return {
-        type: UPDATE_TEXT,
+        type: UPDATE_QUERY,
         payload: query
+    };
+}
+
+export function contentUpdate(content) {
+    return {
+        type: UPDATE_CONTENT,
+        payload: content
     };
 }

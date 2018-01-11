@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {queryUpdate} from '../actions/index';
+import {bindActionCreators} from 'redux';
 
 class QueryBar extends Component {
     constructor(props) {
@@ -6,6 +9,7 @@ class QueryBar extends Component {
         // merely component state, not redux state
         this.state = {query: ''};
 
+        this.onInputChange = this.onInputChange.bind(this);
         this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
@@ -16,8 +20,10 @@ class QueryBar extends Component {
     onFormSubmit(event) {
         event.preventDefault();
 
-        let query = event.target.value;
-        this.setState({query: ''}); // clear the query
+        let q = this.state.query;
+        
+        this.setState({query: ''}); // clear the component query
+        this.props.queryUpdate(q);
     }
 
     render() {
@@ -40,4 +46,9 @@ class QueryBar extends Component {
     }
 }
 
-export default QueryBar;
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({queryUpdate: queryUpdate},
+        dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(QueryBar);
