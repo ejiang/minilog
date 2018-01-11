@@ -15,6 +15,10 @@ class QueryBar extends Component {
 
     onInputChange(event) {
         this.setState({query: event.target.value});
+        if (this.props.live) {
+            let q = event.target.value;
+            this.props.queryUpdate(q);
+        }
     }
 
     onFormSubmit(event) {
@@ -51,4 +55,10 @@ function mapDispatchToProps(dispatch) {
         dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(QueryBar);
+function mapStateToProps(state) {
+    return {
+        live: state.live
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(QueryBar);
