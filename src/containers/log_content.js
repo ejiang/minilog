@@ -40,12 +40,6 @@ class LogContent extends Component {
     render() {
         let sty = {'height': '400px', 'overflowY': 'scroll', 'overflowX': 'scroll',
                     'fontFamily': 'monospace', 'whiteSpace': 'pre'};
-        
-
-        if (!this.props.logContent) {
-            return <div style={sty}>{apache_log}
-            </div>
-        }
 
         return <div style={sty}>
             {this.renderContent()}
